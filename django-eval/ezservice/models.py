@@ -1,3 +1,15 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+
+class Reservation (models.Model):
+    #related name is necessary or else it will not work, the FK need to be different
+    service_owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner_reservation')
+    service_client = models.ForeignKey(User, default='No one')
+
+
+class Service(models.Model):
+    service_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    date = models.DateTimeField ("service_date")
+    description = models.CharField(max_length=200)
