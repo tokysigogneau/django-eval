@@ -5,7 +5,7 @@ from django.db import models
 class Reservation (models.Model):
     #related name is necessary or else it will not work, the FK need to be different
     service_owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner_reservation')
-    service_client = models.ForeignKey(User, default='No one')
+    service_client = models.ForeignKey(User, default='No one',on_delete=models.CASCADE, related_name='client_reservation')
 
 
 class Service(models.Model):
