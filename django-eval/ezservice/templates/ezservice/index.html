@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'ezservice/style.css' %}">
+
 {% if skills_list %}
     <ul>
     {% for skill in skills_list %}
