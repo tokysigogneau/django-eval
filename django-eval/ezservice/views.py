@@ -4,12 +4,12 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.template import loader
 
-from .models import Service, Reservation
+from .models import Service, Reservation, Skill
 
 
 def index(request):
-    services_list = Service.objects.filter(is_available=True)
-    context = {"services_list": services_list}
+    skills_list = Skill.objects.all()
+    context = {"skills_list": skills_list}
 
     return render(request, "ezservice/index.html", context)
 
