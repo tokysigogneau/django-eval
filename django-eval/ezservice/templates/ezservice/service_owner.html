@@ -1,0 +1,14 @@
+{% if service_owner_list %}
+    <ul>
+    {% for service in service_owner_list %}
+
+        <li>{{service.service_owner.username}}  </li>
+        <h4>Date : </h4> {{service.date}}
+        <h4>Description : </h4> <p> {{service.description}}</p>
+        <button>Réserver</button>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No service are available.</p>
+{% endif %}

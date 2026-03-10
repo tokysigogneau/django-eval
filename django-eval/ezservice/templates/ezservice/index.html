@@ -1,7 +1,7 @@
 {% if skills_list %}
     <ul>
     {% for skill in skills_list %}
-        <li><a href="{% url 'ezservice:detail' skill.id %}" > {{ skill.skill_name}} </a></li>
+        <li><a href="{% url 'ezservice:service_owner' skill.skill_name %}" > {{ skill.skill_name}} </a></li>
     {% endfor %}
     </ul>
 {% else %}
