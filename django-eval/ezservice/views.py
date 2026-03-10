@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.http import HttpResponse, Http404
@@ -17,8 +17,5 @@ def services (request, service_id):
     return  HttpResponse("You're looking at list of services %s." %  service_id)
 
 def detail(request, service_id):
-    try:
-        service = Service.objects.get(pk=service_id)
-    except Service.DoesNotExist:
-        raise Http404("Question does not exist")
+    service = get_object_or_404(Service, pk=service_id)
     return render(request, "ezservice/detail.html", {"service": service})
