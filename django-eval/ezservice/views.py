@@ -8,7 +8,7 @@ from .models import Service, Reservation
 
 
 def index(request):
-    services_list = Service.objects.all()
+    services_list = Service.objects.filter(is_available=True)
     context = {"services_list": services_list}
 
     return render(request, "ezservice/index.html", context)
