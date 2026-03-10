@@ -4,10 +4,10 @@
 <p>{{service.date}}</p>
 
 <h2>Information de  l'utilisateur:</h2>
-<p>Nom d'utilisateur : {{user.username}}</p>
-<p>Prénom : {{user.first_name}}</p>
-<p>Nom de famille : {{user.last_name}}</p>
-<p>Adresse email : {{user.email}}</p>
+<p>Nom d'utilisateur : {{service.service_owner.username}}</p>
+<p>Prénom : {{service.service_owner.first_name}}</p>
+<p>Nom de famille : {{service.service_owner.last_name}}</p>
+<p>Adresse email : {{service.service_owner.email}}</p>
 
 <button>Réserver ce service</button>
 
