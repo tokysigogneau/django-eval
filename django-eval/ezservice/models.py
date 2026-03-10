@@ -6,6 +6,7 @@ class Service(models.Model):
     name = models.CharField(max_length=200)
     date = models.DateTimeField ("service_date")
     description = models.CharField(max_length=200)
+    is_available = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
