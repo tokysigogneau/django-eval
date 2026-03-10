@@ -21,5 +21,10 @@ def detail(request, service_id):
     return render(request, "ezservice/detail.html", {"service": service})
 
 def service_owner(request, skill_name):
-    service_owner_list = Service.objects.filter(service_skill__skill_name=skill_name)
-    return render(request, "ezservice/service_owner.html", {"service_owner_list": service_owner_list})
+    service_owner_list = Service.objects.filter(
+        service_skill__skill_name=skill_name,
+        is_available=True)
+    return render(request,
+                  "ezservice/service_owner.html",
+                  {"service_owner_list": service_owner_list}
+                  )
