@@ -23,7 +23,7 @@ class Service(models.Model):
     is_available = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.name
+        return self.service_owner.username
 
 
 class Reservation (models.Model):
