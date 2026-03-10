@@ -1,7 +1,7 @@
 {% if services_list %}
     <ul>
     {% for service in services_list %}
-        <li><a>{{ service.name }}</a></li>
+        <li><a>{{ service.name}} {{service.date}} {{service.service_owner.username}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
