@@ -1,7 +1,7 @@
 {% if services_list %}
     <ul>
     {% for service in services_list %}
-        <li><a href="/ezservice/{{service.id}}/" >{{ service.name}} {{service.date}} {{service.service_owner.username}}</a></li>
+        <li><a href="{% url 'ezservice:detail' service.id %}" >{{ service.name}} {{service.date}} {{service.service_owner.username}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
