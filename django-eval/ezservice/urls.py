@@ -10,5 +10,6 @@ urlpatterns = [
     path("login/", views.log_in, name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("my_skills/", views.my_skills, name="my_skills"),
+    path("add-skill/", views.add_skill, name="add_skill"),
     path("<str:skill_name>/", views.service_owner, name="service_owner"),
 ]

@@ -43,6 +43,25 @@ def my_skills(request):
                   {"my_skills_list": my_skills_list}
                   )
 
+#This function allow the user to set a list of skills he owns
+#Not to create a skill
+@login_required
+def add_skill(request):
+    if request.method == "POST":
+        skill_id = request.POST.get("skill")
+        skill = Skill.objects.get(id=skill_id)
+
+        # check if skill already exist in the list : only add if it's not there yet
+        UserSkill.objects.get_or_create(
+            user=request.user,
+            skill=skill
+        )
+
+        return redirect("ezservice:my_skills")
+
+    skills = Skill.objects.all()
+    return render(request, "ezservice/add_skill.html", {"skills": skills})
+
 def log_in(request):
     if request.method == "POST":
         username = request.POST.get("username")

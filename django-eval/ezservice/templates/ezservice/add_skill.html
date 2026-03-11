@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Ajouter une compétence</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="skill">Choisir une compétence :</label>
+    <select name="skill" id="skill">
+        {% for skill in skills %}
+            <option value="{{ skill.id }}">{{ skill.skill_name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Ajouter</button>
+</form>
+{% endblock %}
