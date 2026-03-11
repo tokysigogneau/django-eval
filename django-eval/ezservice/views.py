@@ -1,5 +1,6 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.http import HttpResponse, Http404
@@ -31,3 +32,20 @@ def service_owner(request, skill_name):
                   "ezservice/service_owner.html",
                   {"service_owner_list": service_owner_list}
                   )
+
+def log_in(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("ezservice:index")
+        else:
+            return render(request, "ezservice/login.html", {
+                "error": "Invalid username or password."
+            })
+
+    return render(request, "ezservice/login.html")
