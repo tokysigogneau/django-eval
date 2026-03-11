@@ -19,6 +19,27 @@ def services (request, service_id):
     return  HttpResponse("You're looking at list of services %s." %  service_id)
 
 @login_required
+def book_service(request, service_id):
+    service = get_object_or_404(Service, id=service_id)
+
+    Reservation.objects.get_or_create(
+        reservation_title=f"Réservation de {service.service_skill.skill_name}",
+        service_owner=service,
+        service_client=request.user
+    )
+
+    service.is_available= False
+    service.save()
+
+    return redirect("ezservice:my_reservations")
+
+@login_required
+def my_reservations(request):
+    reservations = Reservation.objects.filter(service_client=request.user)
+    return render(request, "ezservice/my_reservations.html", {"reservations": reservations})
+
+
+@login_required
 def detail(request, service_id):
     service = get_object_or_404(Service, pk=service_id)
     return render(request, "ezservice/detail.html", {"service": service})

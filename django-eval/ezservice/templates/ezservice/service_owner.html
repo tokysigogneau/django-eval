@@ -12,7 +12,11 @@
         <li>{{service.service_owner.username}}  </li>
         <h4>Date : </h4> {{service.date}}
         <h4>Description : </h4> <p> {{service.description}}</p>
-        <button>Réserver</button>
+
+        <a href="{% url 'ezservice:book_service' service.id %}">
+            <button>Réserver</button>
+        </a>
+
 
     {% endfor %}
     </ul>
