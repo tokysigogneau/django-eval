@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
@@ -16,10 +17,12 @@ def index(request):
 def services (request, service_id):
     return  HttpResponse("You're looking at list of services %s." %  service_id)
 
+@login_required
 def detail(request, service_id):
     service = get_object_or_404(Service, pk=service_id)
     return render(request, "ezservice/detail.html", {"service": service})
 
+@login_required
 def service_owner(request, skill_name):
     service_owner_list = Service.objects.filter(
         service_skill__skill_name=skill_name,
