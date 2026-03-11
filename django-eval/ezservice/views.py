@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -49,3 +49,7 @@ def log_in(request):
             })
 
     return render(request, "ezservice/login.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect("ezservice:index")

@@ -12,6 +12,24 @@
             <ul><a href="/">Home</a></ul>
             <ul><a href="/blog/">Blog</a></ul>
         </ul>
+        <div class="d-flex">
+            {% if user.is_authenticated %}
+                <span>
+                    Bonjour {{ user.username }}
+                </span>
+                <form method="post" action="{% url 'ezservice:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" >
+                        Déconnexion
+                    </button>
+                </form>
+
+            {% else %}
+                <a href="{% url 'ezservice:login' %}">
+                    Connexion
+                </a>
+            {% endif %}
+        </div>
     </div>
 
     <div id="content">
