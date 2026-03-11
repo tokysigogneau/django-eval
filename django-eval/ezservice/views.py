@@ -33,6 +33,7 @@ def service_owner(request, skill_name):
                   {"service_owner_list": service_owner_list}
                   )
 
+@login_required
 def my_skills(request):
     my_skills_list = UserSkill.objects.filter(
         user=request.user
@@ -79,6 +80,7 @@ def log_in(request):
 
     return render(request, "ezservice/login.html")
 
+@login_required
 def logout_view(request):
     logout(request)
     return redirect("ezservice:index")
