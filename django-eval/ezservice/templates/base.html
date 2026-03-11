@@ -9,8 +9,7 @@
     <div id="header">
         <h1>logo</h1>
         <ul >
-            <ul><a href="/">Home</a></ul>
-            <ul><a href="/blog/">Blog</a></ul>
+            <ul><a href="{% url 'ezservice:index'%}">Home</a></ul>
             <ul><a href="{% url 'ezservice:my_skills' %}">Mes compétences</a></ul>
             <ul><a href="{% url 'ezservice:add_skill' %}">Ajouter une compétence</a></ul>
 
