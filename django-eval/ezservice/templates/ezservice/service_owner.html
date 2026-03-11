@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
 {% if service_owner_list %}
     <ul>
     {% for service in service_owner_list %}
@@ -12,3 +19,4 @@
 {% else %}
     <p>No service are available.</p>
 {% endif %}
+{% endblock %}

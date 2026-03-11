@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<h2>Mes compétences</h2>
+
+<ul>
+    {% for us in my_skills_list %}
+        <li>{{ us.skill.skill_name }}</li>
+    {% empty %}
+        <li>Aucune compétence enregistrée.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

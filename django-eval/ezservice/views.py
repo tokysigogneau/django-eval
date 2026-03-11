@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.template import loader
 
-from .models import Service, Reservation, Skill
+from .models import Service, Reservation, Skill, UserSkill
 
 
 def index(request):
@@ -31,6 +31,16 @@ def service_owner(request, skill_name):
     return render(request,
                   "ezservice/service_owner.html",
                   {"service_owner_list": service_owner_list}
+                  )
+
+def my_skills(request):
+    my_skills_list = UserSkill.objects.filter(
+        user=request.user
+    )
+
+    return render(request,
+                  "ezservice/my_skills.html",
+                  {"my_skills_list": my_skills_list}
                   )
 
 def log_in(request):

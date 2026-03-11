@@ -11,6 +11,8 @@
         <ul >
             <ul><a href="/">Home</a></ul>
             <ul><a href="/blog/">Blog</a></ul>
+            <ul><a href="{% url 'ezservice:my_skills' %}">Mes compétences</a></ul>
+
         </ul>
         <div class="d-flex">
             {% if user.is_authenticated %}
