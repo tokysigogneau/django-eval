@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href=".././static/ezservice/style.css">
     <title>My amazing blog</title>
 </head>
 
 <body>
-    <div id="sidebar">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog/">Blog</a></li>
+    <div id="header">
+        <h1>logo</h1>
+        <ul >
+            <ul><a href="/">Home</a></ul>
+            <ul><a href="/blog/">Blog</a></ul>
         </ul>
     </div>
 
     <div id="content">
-        <h2>Entry one</h2>
-        <p>This is my first entry.</p>
-
-        <h2>Entry two</h2>
-        <p>This is my second entry.</p>
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>

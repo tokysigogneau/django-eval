@@ -1,13 +1,18 @@
+{% extends "base.html" %}
 {% load static %}
+{% block header %}
 
-<link rel="stylesheet" href="{% static 'ezservice/style.css' %}">
+{% endblock %}
 
-{% if skills_list %}
-    <ul>
-    {% for skill in skills_list %}
-        <li><a href="{% url 'ezservice:service_owner' skill.skill_name %}" > {{ skill.skill_name}} </a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% block content %}
+
+    {% if skills_list %}
+        <ul>
+        {% for skill in skills_list %}
+            <li><a href="{% url 'ezservice:service_owner' skill.skill_name %}" > {{ skill.skill_name}} </a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}

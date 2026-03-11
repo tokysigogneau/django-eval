@@ -2,3 +2,13 @@ li a {
     color: green;
     font-size: 30px;
 }
+
+#header {
+    background-color: grey;
+    display : flex;
+
+}
+
+#header ul {
+display : flex
+}
