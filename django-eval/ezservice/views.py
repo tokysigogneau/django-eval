@@ -15,6 +15,29 @@ def index(request):
 
     return render(request, "ezservice/index.html", context)
 
+@login_required
+def create_service(request):
+    if request.method == "POST":
+        skill_id = request.POST.get("skill")
+        date = request.POST.get("date")
+        description = request.POST.get("description")
+
+        skill = Skill.objects.get(id=skill_id)
+
+        Service.objects.create(
+            service_owner=request.user,
+            service_skill=skill,
+            date=date,
+            description=description,
+            is_available=True
+        )
+
+        return redirect("ezservice:index")
+
+    # list of skills
+    skills = Skill.objects.all()
+    return render(request, "ezservice/create_service.html", {"skills": skills})
+
 def services (request, service_id):
     return  HttpResponse("You're looking at list of services %s." %  service_id)
 

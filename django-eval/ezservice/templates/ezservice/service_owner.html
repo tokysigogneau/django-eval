@@ -7,11 +7,12 @@
 {% block content %}
 {% if service_owner_list %}
     <ul>
+
     {% for service in service_owner_list %}
 
-        <li>{{service.service_owner.username}}  </li>
-        <h4>Date : </h4> {{service.date}}
-        <h4>Description : </h4> <p> {{service.description}}</p>
+        <li> <h3> {{service.service_owner.username}} </h3>  </li>
+        <p> <strong>Date :</strong>  {{service.date}} </p>
+        <p> <strong> Description : </strong> {{service.description}}   </p>
 
         <a href="{% url 'ezservice:book_service' service.id %}">
             <button>Réserver</button>

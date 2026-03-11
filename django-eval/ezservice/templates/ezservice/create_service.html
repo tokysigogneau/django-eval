@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>Créer un service</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="skill">Compétence :</label>
+    <select name="skill" id="skill" required>
+        {% for skill in skills %}
+            <option value="{{ skill.id }}">{{ skill.skill_name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <label for="date">Date du service :</label>
+    <input type="datetime-local" name="date" id="date" required>
+    <br>
+
+    <label for="description">Description :</label>
+    <textarea name="description" id="description" rows="4" required></textarea>
+    <br>
+
+    <button type="submit">Créer le service</button>
+</form>
+
+{% endblock %}

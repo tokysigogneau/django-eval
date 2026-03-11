@@ -13,5 +13,7 @@ urlpatterns = [
     path("add-skill/", views.add_skill, name="add_skill"),
     path("book/<int:service_id>/", views.book_service, name="book_service"),
     path("my_reservations/", views.my_reservations, name="my_reservations"),
+    path("create_service/", views.create_service, name="create_service"),
+
     path("<str:skill_name>/", views.service_owner, name="service_owner"),
 ]
