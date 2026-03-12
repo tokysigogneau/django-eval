@@ -2,7 +2,22 @@
 {% load static %}
 
 {% block content %}
-<h2>Les compétences : </h2>
+<h2>Mes compétences</h2>
+
+<ul>
+    {% for user in my_skills_list %}
+        <li><a href="{% url 'ezservice:service_owner' user.skill.skill_name %}">
+            {{ user.skill.skill_name }}</a>
+        </li>
+
+    {% empty %}
+        <li>Aucune compétence enregistrée.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'ezservice:add_skill' %}">Ajouter une compétence</a>
+
+<h2>Les compétences proposées : </h2>
     {% if skills_list %}
         <ul>
         {% for skill in skills_list %}
@@ -10,6 +25,6 @@
         {% endfor %}
         </ul>
     {% else %}
-        <p>No polls are available.</p>
+        <p>Aucune compétence mise en ligne</p>
     {% endif %}
 {% endblock %}

@@ -11,7 +11,10 @@ from .models import Service, Reservation, Skill, UserSkill
 
 def index(request):
     skills_list = Skill.objects.all()
-    context = {"skills_list": skills_list}
+    my_skills_list = UserSkill.objects.filter(
+        user=request.user
+    )
+    context = {"skills_list": skills_list, "my_skills_list": my_skills_list}
 
     return render(request, "ezservice/index.html", context)
 
