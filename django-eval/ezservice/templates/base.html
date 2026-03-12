@@ -14,7 +14,7 @@
             <ul><a href="{% url 'ezservice:add_skill' %}">Ajouter une compétence</a></ul>
             <ul><a href="{% url 'ezservice:my_reservations' %}">Mes réservations</a></ul>
             <ul><a href="{% url 'ezservice:create_service' %}">Créer un service</a></ul>
-
+            <ul><a href="{% url 'ezservice:my_services' %}">Mes services</a></ul>
         </ul>
         <div class="d-flex">
             {% if user.is_authenticated %}

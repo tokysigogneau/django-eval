@@ -38,8 +38,9 @@ def create_service(request):
     skills = Skill.objects.all()
     return render(request, "ezservice/create_service.html", {"skills": skills})
 
-def services (request, service_id):
-    return  HttpResponse("You're looking at list of services %s." %  service_id)
+def my_services (request):
+    my_services = Service.objects.filter(service_owner=request.user)
+    return render(request, "ezservice/my_services.html", {"my_services": my_services})
 
 @login_required
 def book_service(request, service_id):

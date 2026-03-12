@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>Mes services recherchés</h2>
+
+{% if my_services %}
+    <ul>
+        {% for my_service in my_services %}
+            <li>
+
+                <h3>{{ my_service.reservation_title }}</h3>
+
+                <p><strong>Compétence :</strong>
+                    {{ my_service.service_skill.skill_name }}</p>
+
+
+                <p><strong>Date du service :</strong>
+                    {{ my_service.date }}</p>
+
+                <p><strong>Description :</strong>
+                    {{ my_service.description }}</p>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Vous n'avez aucun service pour le moment.</p>
+{% endif %}
+
+{% endblock %}
