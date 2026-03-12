@@ -10,7 +10,7 @@
 
     {% for service in service_owner_list %}
 
-        <li> <h3> {{service.service_owner.username}} </h3>  </li>
+        <li> <h3> {{service.service_owner.first_name}} {{service.service_owner.last_name}} </h3>  </li>
         <p> <strong>Date :</strong>  {{service.date}} </p>
         <p> <strong> Description : </strong> {{service.description}}   </p>
 
