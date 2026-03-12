@@ -54,6 +54,14 @@ def my_services (request):
                   "ezservice/my_services.html",
                   {"my_services": my_services})
 
+'''
+This function takes a request and a service_id in parameter.
+It allows the user to book a specific service.
+It create a new data object " reservation " from user and the service details.
+get_or_create() function is used to first check if it already exists or not, 
+and create only if it doesn't exist
+And at the end, it change the service is_available status to False.
+'''
 @login_required
 def book_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
