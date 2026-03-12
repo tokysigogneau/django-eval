@@ -1,27 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
-{% block header %}
 
-{% endblock %}
 
 {% block content %}
-{% if service_owner_list %}
-    <ul>
+    {% if service_owner_list %}
+        <ul>
 
-    {% for service in service_owner_list %}
+        {% for service in service_owner_list %}
 
-        <li> <h3> {{service.service_owner.first_name}} {{service.service_owner.last_name}} </h3>  </li>
-        <p> <strong>Date :</strong>  {{service.date}} </p>
-        <p> <strong> Description : </strong> {{service.description}}   </p>
+            <li> <h3> {{service.service_owner.first_name}} {{service.service_owner.last_name}} </h3>  </li>
+            <p> <strong>Date :</strong>  {{service.date}} </p>
+            <p> <strong> Description : </strong> {{service.description}}   </p>
 
-        <a href="{% url 'ezservice:book_service' service.id %}">
-            <button>Réserver</button>
-        </a>
+            <a href="{% url 'ezservice:book_service' service.id %}">
+                <button>Réserver</button>
+            </a>
 
 
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Aucune demande de service</p>
-{% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune demande de service</p>
+    {% endif %}
 {% endblock %}
