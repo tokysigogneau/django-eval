@@ -8,7 +8,11 @@ from django.template import loader
 
 from .models import Service, Reservation, Skill, UserSkill
 
-
+'''
+this function takes request in parameter.
+It display a list of all the skills the website allow to share, and a list of skills the user selected.
+The context contains 2 elements because we have 2 list of elements we want to display, so we return them both.
+'''
 def index(request):
     skills_list = Skill.objects.all()
     my_skills_list = UserSkill.objects.filter(
