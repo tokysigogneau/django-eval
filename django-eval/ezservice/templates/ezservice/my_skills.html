@@ -8,8 +8,10 @@
 <h2>Mes compétences</h2>
 
 <ul>
-    {% for us in my_skills_list %}
-        <li>{{ us.skill.skill_name }}</li>
+    {% for user in my_skills_list %}
+        <li><a href="{% url 'ezservice:service_owner' user.skill.skill_name %}">
+            {{ user.skill.skill_name }}</a>
+        </li>
     {% empty %}
         <li>Aucune compétence enregistrée.</li>
     {% endfor %}
