@@ -84,6 +84,11 @@ def detail(request, service_id):
                   "ezservice/detail.html",
                   {"service": service})
 
+'''
+This function takes a request and a skill_name in parameter.
+It display a list of all the service request for the selected service. made with : filter() 
+It will not display the service made by the connected user. made with exclude()
+'''
 @login_required
 def service_owner(request, skill_name):
     service_owner_list = Service.objects.filter(
