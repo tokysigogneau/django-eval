@@ -69,6 +69,10 @@ def book_service(request, service_id):
 
     return redirect("ezservice:my_reservations")
 
+'''
+This function take a request in parameter.
+It give a list of reservations the user made with other users.
+'''
 @login_required
 def my_reservations(request):
     reservations = Reservation.objects.filter(service_client=request.user)
