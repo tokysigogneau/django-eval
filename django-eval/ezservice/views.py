@@ -14,9 +14,13 @@ def index(request):
     my_skills_list = UserSkill.objects.filter(
         user=request.user
     )
+
+    #the context contains 2 elements, so I put them in a list
     context = {"skills_list": skills_list, "my_skills_list": my_skills_list}
 
-    return render(request, "ezservice/index.html", context)
+    return render(request,
+                  "ezservice/index.html",
+                  context)
 
 @login_required
 def create_service(request):
@@ -38,12 +42,17 @@ def create_service(request):
         return redirect("ezservice:index")
 
     # list of skills
+    # the user can select skill from the list, he can't create a skill he wants
     skills = Skill.objects.all()
-    return render(request, "ezservice/create_service.html", {"skills": skills})
+    return render(request,
+                  "ezservice/create_service.html",
+                  {"skills": skills})
 
 def my_services (request):
     my_services = Service.objects.filter(service_owner=request.user)
-    return render(request, "ezservice/my_services.html", {"my_services": my_services})
+    return render(request,
+                  "ezservice/my_services.html",
+                  {"my_services": my_services})
 
 @login_required
 def book_service(request, service_id):
@@ -63,13 +72,17 @@ def book_service(request, service_id):
 @login_required
 def my_reservations(request):
     reservations = Reservation.objects.filter(service_client=request.user)
-    return render(request, "ezservice/my_reservations.html", {"reservations": reservations})
+    return render(request,
+                  "ezservice/my_reservations.html",
+                  {"reservations": reservations})
 
 
 @login_required
 def detail(request, service_id):
     service = get_object_or_404(Service, pk=service_id)
-    return render(request, "ezservice/detail.html", {"service": service})
+    return render(request,
+                  "ezservice/detail.html",
+                  {"service": service})
 
 @login_required
 def service_owner(request, skill_name):
@@ -109,7 +122,9 @@ def add_skill(request):
         return redirect("ezservice:my_skills")
 
     skills = Skill.objects.all()
-    return render(request, "ezservice/add_skill.html", {"skills": skills})
+    return render(request,
+                  "ezservice/add_skill.html",
+                  {"skills": skills})
 
 def log_in(request):
     if request.method == "POST":
