@@ -88,7 +88,8 @@ def detail(request, service_id):
 def service_owner(request, skill_name):
     service_owner_list = Service.objects.filter(
         service_skill__skill_name=skill_name,
-        is_available=True)
+        is_available=True).exclude(service_owner = request.user)
+
     return render(request,
                   "ezservice/service_owner.html",
                   {"service_owner_list": service_owner_list}
